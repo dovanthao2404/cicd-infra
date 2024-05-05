@@ -239,12 +239,8 @@ workflows:
           filters:
             branches:
               only: [master]
-      - configure-infrastructure:
-          requires: [deploy-infrastructure]
-      - run-migrations:
-          requires: [configure-infrastructure]
       - deploy-frontend:
-          requires: [run-migrations]
+          requires: [deploy-infrastructure]
       - smoke-test:
           requires: [deploy-frontend]
       - cloudfront-update:
